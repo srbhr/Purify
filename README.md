@@ -147,7 +147,3 @@ Parameters:
 4. When processing very large files (multiple GB):
    - Use `clean_file()` with an appropriate chunk size
    - Consider running on a machine with more CPU cores for faster processing
-
-## License
-
-[Specify your license here]
