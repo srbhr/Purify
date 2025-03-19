@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Simple benchmarking script for the new text cleaner.
-Tests performance on the existing big.txt file.
+Simple benchmarking script for the text cleaner.
+Tests performance on specified input file.
 """
 
 import time
@@ -9,8 +9,24 @@ import gc
 import sys
 import os
 
-# Import new optimized cleaner
+# Import optimized cleaner
 from text_cleaner import clean_text, clean_batch, clean_file
+
+#=============================================================================
+# CONFIGURATION - Edit these values to customize the benchmark
+#=============================================================================
+# Input file to test (path to file)
+INPUT_FILE = "100mb_file.txt"
+
+# Output file where cleaned text will be saved
+OUTPUT_FILE = "cleaned_output.txt"
+
+# Chunk sizes to test for file processing (in lines)
+CHUNK_SIZES = [100000, 1000000, 10000000]  # 10K, 100K, 1MB
+
+# Worker counts to test for batch processing
+WORKER_COUNTS = [None, 2, 4, 8]  # None = auto (CPU count - 1)
+#=============================================================================
 
 def benchmark(name, func, data):
     """Run a simple benchmark and print the results"""
@@ -33,23 +49,25 @@ def benchmark(name, func, data):
 def main():
     print("TEXT CLEANER BENCHMARK")
     print("=====================")
+    print(f"Input file: {INPUT_FILE}")
+    print(f"Output file: {OUTPUT_FILE}")
     
     try:
-        # Check if big.txt exists
-        if not os.path.exists("big.txt"):
-            print("Error: big.txt not found in the current directory.")
+        # Check if input file exists
+        if not os.path.exists(INPUT_FILE):
+            print(f"Error: {INPUT_FILE} not found in the current directory.")
             return
             
         # Get file size
-        file_size = os.path.getsize("big.txt")
+        file_size = os.path.getsize(INPUT_FILE)
         file_size_mb = file_size / (1024 * 1024)
-        print(f"Found big.txt ({file_size_mb:.2f} MB)")
+        print(f"Found {INPUT_FILE} ({file_size_mb:.2f} MB)")
         
         # Test 1: Single text processing
         print("\n--- SINGLE TEXT PROCESSING ---")
         
         # Load a sample of text
-        with open("big.txt", "r", encoding="utf-8", errors="replace") as f:
+        with open(INPUT_FILE, "r", encoding="utf-8", errors="replace") as f:
             sample = f.read(100000)  # First 100K characters
         
         sample_size_kb = len(sample) / 1024
@@ -66,20 +84,15 @@ def main():
         print("\n--- FULL FILE PROCESSING ---")
         print("Processing entire file with clean_file function...")
         
-        # Create output file
-        output_file = "big_cleaned.txt"
-        
         # Benchmark different chunk sizes
-        chunk_sizes = [10000, 100000, 1000000]  # 10K, 100K, 1MB
-        
-        for chunk_size in chunk_sizes:
+        for chunk_size in CHUNK_SIZES:
             # Force garbage collection
             gc.collect()
             
             # Time the operation
             print(f"\nTesting with chunk_size={chunk_size}")
             start_time = time.time()
-            clean_file("big.txt", output_file, chunk_size)
+            clean_file(INPUT_FILE, OUTPUT_FILE, chunk_size)
             end_time = time.time()
             
             # Calculate performance
@@ -90,8 +103,8 @@ def main():
             print(f"  Processing speed: {processing_speed:.2f} MB/second")
         
         # Get output file size
-        if os.path.exists(output_file):
-            cleaned_size = os.path.getsize(output_file)
+        if os.path.exists(OUTPUT_FILE):
+            cleaned_size = os.path.getsize(OUTPUT_FILE)
             reduction = (1 - (cleaned_size / file_size)) * 100
             print(f"\nOutput file size: {cleaned_size / 1024 / 1024:.2f} MB")
             print(f"Size reduction: {reduction:.2f}%")
@@ -100,7 +113,7 @@ def main():
         print("\n--- BATCH PROCESSING ---")
         
         # Read a batch of lines for testing
-        with open("big.txt", "r", encoding="utf-8", errors="replace") as f:
+        with open(INPUT_FILE, "r", encoding="utf-8", errors="replace") as f:
             # Try to read 10,000 lines, but handle EOF gracefully
             lines = []
             for _ in range(10000):
@@ -111,10 +124,8 @@ def main():
         
         print(f"Testing batch processing with {len(lines)} lines")
         
-        # Worker count options to test
-        worker_counts = [None, 2, 4, 8]  # None = auto (CPU count - 1)
-        
-        for workers in worker_counts:
+        # Test different worker counts
+        for workers in WORKER_COUNTS:
             # Force garbage collection
             gc.collect()
             
@@ -132,7 +143,7 @@ def main():
             print(f"  Speed: {lines_per_second:.2f} lines/second")
         
         print("\nBenchmark complete!")
-        print(f"Cleaned file saved as: {output_file}")
+        print(f"Cleaned file saved as: {OUTPUT_FILE}")
         
     except Exception as e:
         print(f"An error occurred: {str(e)}")
