@@ -1,0 +1,148 @@
+# Large Text Sample for Benchmarking TextPurify
+
+## Mixed Content with Various HTML Elements
+
+<div class="container">
+<h1>The Evolution of Natural Language Processing</h1>
+<p class="intro">Natural Language Processing (NLP) has <strong>transformed</strong> dramatically over the past decade. From simple <em>rule-based</em> systems to sophisticated neural networks, the journey has been remarkable! The field continues to evolve at an unprecedented pace??? Researchers and engineers are constantly pushing boundaries.</p>
+
+<blockquote>
+"Language is the road map of a culture. It tells you where its people come from and where they are going." - Rita Mae Brown
+</blockquote>
+
+<h2>Key Milestones in NLP History</h2>
+<ul>
+    <li>1950s: Early machine translation attempts</li>
+    <li>1960s: ELIZA - first chatbot</li>
+    <li>1980s: Statistical methods emerge</li>
+    <li>2010s: Deep learning revolution begins!!!</li>
+    <li>2018-2023: Transformer models dominate the landscape</li>
+</ul>
+
+<p>The impact of these developments cannot be overstated; they have fundamentally altered how we interact with technology. Consider the following example:</p>
+
+<pre><code>
+# Simple sentiment analysis (Python)
+def analyze_sentiment(text):
+    if "love" in text or "great" in text:
+        return "POSITIVE"
+    elif "hate" in text or "terrible" in text:
+        return "NEGATIVE"
+    else:
+        return "NEUTRAL"
+</code></pre>
+
+<p>This simplistic approach has been replaced by models that understand <a href="https://example.com/context">context</a>, nuance, and even sarcasm to some degree.</p>
+</div>
+
+## Technical Specifications and Challenges
+
+<table border="1">
+    <tr>
+        <th>Model Type</th>
+        <th>Parameters</th>
+        <th>Training Data</th>
+        <th>Performance</th>
+    </tr>
+    <tr>
+        <td>BERT</td>
+        <td>110M - 340M</td>
+        <td>Books + Wikipedia</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>GPT-3</td>
+        <td>175B</td>
+        <td>Internet + Books</td>
+        <td>Excellent</td>
+    </tr>
+    <tr>
+        <td>LLaMA 2</td>
+        <td>7B - 70B</td>
+        <td>Web, books, code, etc.</td>
+        <td>Very Good</td>
+    </tr>
+</table>
+
+<div id="technical-analysis">
+<p>When implementing NLP solutions, developers face numerous challenges, including:</p>
+<ol>
+    <li>Ambiguity in language (e.g., "The duck is ready to eat" - who's eating?)</li>
+    <li>Handling out-of-vocabulary words</li>
+    <li>Maintaining context over long sequences</li>
+    <li>Computational efficiency vs. model size</li>
+    <li>Ethical considerations & biases</li>
+</ol>
+
+<p style="color: red; font-weight: bold;">WARNING: Failing to address these challenges can result in poor performance and potentially harmful outputs!</p>
+</div>
+
+## Applications Across Industries
+
+The financial sector has embraced NLP for various applications, including:
+- Sentiment analysis of market news
+- Automated report generation
+- Fraud detection through communication analysis
+- Customer service chatbots
+
+Healthcare organizations utilize NLP to:
+1. Extract information from clinical notes
+2. Analyze research papers at scale
+3. Improve patient communication
+4. Predict disease outbreaks through social media monitoring
+
+Email: contact@nlp-innovations.com | Website: https://www.nlp-innovations.example.org
+
+## Future Directions & Philosophical Considerations
+
+<aside>
+<p>As we look to the future, several questions emerge about the role of language models in society. Will they continue to enhance human capabilities, or might they begin to replace certain cognitive functions? The boundary between augmentation and replacement remains blurry...</p>
+</aside>
+
+<p>Recent advances in multimodal models suggest that the future of NLP lies not in text alone, but in the integration of:
+    - Text understanding & generation
+    - Image recognition & creation
+    - Audio processing & synthesis
+    - Real-time decision making
+    - Memory and contextual awareness
+
+This integration poses both exciting opportunities and significant challenges.</p>
+
+<p>Consider the implications of a system that can simultaneously understand:
+    * The content of a conversation
+    * The emotional state of participants
+    * The historical context of relationships
+    * Cultural and social norms
+    * Subtle non-verbal cues
+
+Such systems would fundamentally transform human-computer interaction!!!</p>
+
+<script>
+function highlightText() {
+    document.getElementById('technical-analysis').style.backgroundColor = '#ffffcc';
+}
+</script>
+
+## Research Challenges and Opportunities
+
+<h3>Efficiency vs. Accuracy Trade-offs</h3>
+
+<p>Researchers continue to explore methods for making large language models more efficient while maintaining their impressive capabilities. This includes techniques such as:</p>
+
+<div class="techniques">
+    <span class="technique">Knowledge distillation</span> - <em>Transferring knowledge from larger to smaller models</em><br/>
+    <span class="technique">Quantization</span> - <em>Reducing numerical precision of model weights</em><br/>
+    <span class="technique">Pruning</span> - <em>Removing unnecessary connections in neural networks</em><br/>
+    <span class="technique">Sparse attention mechanisms</span> - <em>Focusing computational resources where they matter most</em>
+</div>
+
+<p>The ideal balance remains elusive, with each approach offering different advantages and limitations. As computing resources become more constrained and applications more demanding, these efficiency considerations gain importance.</p>
+
+<p>In conclusion, the field of NLP stands at a fascinating crossroads, with technical capabilities expanding rapidly while ethical and practical considerations become increasingly complex. The next decade will likely bring transformations we can scarcely imagine today......</p>
+
+<!-- This is an HTML comment that should be removed during cleaning -->
+
+<footer>
+<p>© 2023 NLP Research Consortium. All rights reserved. Terms and conditions apply.</p>
+<p>Contact: info@nlp-consortium.org | +1 (555) 123-4567</p>
+</footer>
